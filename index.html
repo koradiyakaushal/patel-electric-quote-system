@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patel Electrical — Price Calculator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f3f4f6; color: #1a1a1a; line-height: 1.5; font-size: 15px; }
+
+    /* Header */
+    .header { background: #1a1a1a; color: #fff; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .header h1 { font-size: 1rem; font-weight: 600; }
+    .header .brand { color: #f97316; font-weight: 700; }
+    .header .save-btn { background: #f97316; color: #fff; border: none; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+    .header .save-btn:hover { background: #ea580c; }
+    .header .save-btn:active { transform: scale(0.97); }
+
+    /* Layout — single column, Excel-like stacked rows */
+    .main { max-width: 720px; margin: 0 auto; padding: 1rem; }
+
+    /* Card sections */
+    .card { background: #fff; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); overflow: hidden; }
+    .card-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; background: #374151; padding: 0.5rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+    .card-title.solar { background: #1e40af; }
+    .card-title.rebates { background: #15803d; }
+    .card-title.battery { background: #7c3aed; }
+    .card-title.output { background: #1a1a1a; }
+    .card-title.history { background: #64748b; }
+    .card-body { padding: 0.75rem 1rem; }
+
+    /* Form rows — each row = one Excel row */
+    .row { display: flex; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; gap: 0.75rem; flex-wrap: wrap; }
+    .row:last-child { border-bottom: none; }
+    .row-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; min-width: 180px; flex-shrink: 0; }
+    .row-input { flex: 1; min-width: 0; }
+    .row-value { font-size: 0.9rem; font-weight: 600; color: #374151; text-align: right; min-width: 100px; font-variant-numeric: tabular-nums; }
+    .row-value.computed { color: #9ca3af; font-weight: 400; }
+    .row select, .row input[type="number"], .row input[type="text"] { width: 100%; padding: 0.45rem 0.6rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; background: #fff; }
+    .row select:focus, .row input:focus { outline: none; border-color: #f97316; box-shadow: 0 0 0 2px rgba(249,115,22,0.15); }
+    .row input[readonly] { background: #f9fafb; color: #6b7280; border-color: #e5e7eb; }
+    .row .hint { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; }
+
+    @media (max-width: 600px) {
+      .row { flex-direction: column; align-items: stretch; gap: 0.25rem; }
+      .row-label { min-width: unset; }
+      .row-value { text-align: left; }
+    }
+
+    /* Toggle switch — using <label> so clicking anywhere toggles */
+    .toggle { position: relative; display: inline-flex; align-items: center; width: 44px; height: 24px; flex-shrink: 0; cursor: pointer; }
+    .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .toggle .track { position: absolute; inset: 0; background: #d1d5db; border-radius: 12px; transition: background 0.2s; }
+    .toggle .track::before { content: ''; position: absolute; left: 2px; top: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+    .toggle input:checked + .track { background: #f97316; }
+    .toggle input:checked + .track::before { transform: translateX(20px); }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; }
+    .toggle-val { font-size: 0.8rem; color: #9ca3af; margin-right: 0.5rem; }
+
+    /* Battery fade when off */
+    .battery-fields { transition: opacity 0.2s; }
+    .battery-fields.off { opacity: 0.25; pointer-events: none; }
+
+    /* Quote output table */
+    .q-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .q-table td { padding: 0.4rem 0.6rem; }
+    .q-table .sec td { background: #374151; color: #fff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    .q-table .sec.solar td { background: #1e40af; }
+    .q-table .sec.rebates td { background: #15803d; }
+    .q-table .sec.battery td { background: #7c3aed; }
+    .q-table .item td { border-bottom: 1px solid #f3f4f6; }
+    .q-table .item .lbl { color: #374151; }
+    .q-table .item .dtl { color: #9ca3af; font-size: 0.8rem; }
+    .q-table .item .amt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
+    .q-table .sub td { border-top: 2px solid #e5e7eb; font-weight: 700; background: #f9fafb; }
+    .q-table .sub .amt { text-align: right; }
+    .q-table .rebate .amt { color: #16a34a; }
+    .q-table .highlight td { background: #fff7ed; font-weight: 800; color: #f97316; }
+    .q-table .highlight .amt { text-align: right; }
+    .q-table .grand td { border-top: 3px solid #f97316; font-weight: 800; font-size: 1.05rem; background: #fef3c7; }
+    .q-table .grand .amt { text-align: right; }
+
+    /* Summary strip */
+    .summary { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .summary .chip { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 0.5rem 0.75rem; flex: 1; min-width: 130px; }
+    .summary .chip .chip-label { font-size: 0.65rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; }
+    .summary .chip .chip-val { font-size: 1.1rem; font-weight: 800; }
+    .summary .chip.total { background: #1a1a1a; border-color: #1a1a1a; }
+    .summary .chip.total .chip-label { color: #9ca3af; }
+    .summary .chip.total .chip-val { color: #fff; }
+
+    /* Quote history */
+    .history-list { list-style: none; }
+    .history-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; border-bottom: 1px solid #f3f4f6; flex-wrap: wrap; }
+    .history-item:last-child { border-bottom: none; }
+    .history-id { font-weight: 700; color: #374151; font-size: 0.9rem; min-width: 80px; }
+    .history-desc { flex: 1; font-size: 0.8rem; color: #6b7280; min-width: 150px; }
+    .history-price { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 80px; text-align: right; }
+    .history-date { font-size: 0.75rem; color: #9ca3af; min-width: 80px; }
+    .history-actions { display: flex; gap: 0.25rem; }
+    .btn-sm { border: none; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+    .btn-edit { background: #dbeafe; color: #1e40af; }
+    .btn-clone { background: #f3e8ff; color: #7c3aed; }
+    .btn-del { background: #fee2e2; color: #dc2626; }
+    .btn-sm:hover { filter: brightness(0.95); }
+    .history-empty { color: #9ca3af; font-size: 0.85rem; padding: 0.5rem 0; }
+
+    /* toast */
+    .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; padding: 0.6rem 1.25rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 200; }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span class="brand">Patel Electrical</span> &mdash; Price Calculator</h1>
+  <button class="save-btn" onclick="saveQuote()">Save Quote</button>
+</div>
+
+<div class="main">
+
+  <!-- Current quote ID -->
+  <div style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+    <span style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; font-weight: 600;">Quote</span>
+    <span id="quoteId" style="font-weight: 800; font-size: 1rem; color: #374151;">#—</span>
+    <button onclick="newQuote()" style="margin-left: auto; border: 1px solid #d1d5db; background: #fff; padding: 0.3rem 0.75rem; border-radius: 5px; font-size: 0.8rem; cursor: pointer; font-weight: 600;">+ New Quote</button>
+  </div>
+
+  <!-- ============ SOLAR ============ -->
+  <div class="card">
+    <div class="card-title solar">Solar System</div>
+    <div class="card-body">
+
+      <div class="row">
+        <div class="row-label">Panel</div>
+        <div class="row-input"><select id="panel"></select></div>
+      </div>
+      <div class="row">
+        <div class="row-label">No of Panels</div>
+        <div class="row-input" style="max-width:120px;"><input type="number" id="numPanels" value="28" min="1" max="100"></div>
+        <div class="row-value computed" id="panelPriceInfo"></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Mounting</div>
+        <div class="row-value computed" id="systemSizeInfo"></div>
+        <div class="row-value" id="mountingCostDisplay"></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Inverter</div>
+        <div class="row-input"><select id="inverter"></select></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Electrical Kit</div>
+        <div class="row-value computed" id="phaseInfo"></div>
+        <div class="row-value" id="elecKitDisplay"></div>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Double Storey</span>
+        <span class="toggle-val" id="dblVal">$0</span>
+        <label class="toggle"><input type="checkbox" id="doubleStorey"><span class="track"></span></label>
+      </div>
+      <div class="row">
+        <div class="row-label">Smart Meter</div>
+        <div class="row-value" id="smartMeterDisplay"></div>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Tilt Mounting</span>
+        <span class="toggle-val" id="tiltVal">$0</span>
+        <label class="toggle"><input type="checkbox" id="tiltMounting"><span class="track"></span></label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Old Panel Removal</span>
+        <span class="toggle-val" id="removeVal">$0</span>
+        <label class="toggle"><input type="checkbox" id="panelRemoval"><span class="track"></span></label>
+      </div>
+
+      <div class="row">
+        <div class="row-label">Installer Cost Discount</div>
+        <div class="row-input" style="max-width:80px;"><input type="number" id="installerDiscount" value="0" min="0" max="100" step="1"></div>
+        <span style="font-size:0.85rem;color:#6b7280;">%</span>
+        <div class="row-value" id="installerCostDisplay"></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Fix Expenses & Margin Discount</div>
+        <div class="row-input" style="max-width:80px;"><input type="number" id="marginDiscount" value="0" min="0" max="100" step="1"></div>
+        <span style="font-size:0.85rem;color:#6b7280;">%</span>
+        <div class="row-value" id="fixExpDisplay"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ REBATES ============ -->
+  <div class="card">
+    <div class="card-title rebates">Enter Postcode for Solar STC</div>
+    <div class="card-body">
+
+      <div class="row">
+        <div class="row-label">Postcode</div>
+        <div class="row-input" style="max-width:120px;"><input type="number" id="postcode" value="3978" min="0" max="9999"></div>
+        <div class="row-value computed" id="zoneInfo"></div>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Eligible Solar VIC Rebate</span>
+        <span class="toggle-val" id="vicVal">$0</span>
+        <label class="toggle"><input type="checkbox" id="solarVic"><span class="track"></span></label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Eligible Solar VIC 0% Int Loan</span>
+        <span class="toggle-val" id="vicLoanVal">$0</span>
+        <label class="toggle"><input type="checkbox" id="solarVicLoan"><span class="track"></span></label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ BATTERY ============ -->
+  <div class="card">
+    <div class="card-title battery">
+      Battery
+      <label class="toggle"><input type="checkbox" id="batteryRequired" checked><span class="track"></span></label>
+    </div>
+    <div class="card-body">
+      <div id="batteryFields" class="battery-fields">
+
+        <div class="row">
+          <div class="row-label">Battery Brand</div>
+          <div class="row-input"><select id="battery"></select></div>
+        </div>
+        <div class="row">
+          <div class="row-label">No of Modules</div>
+          <div class="row-input" style="max-width:120px;"><input type="number" id="numModules" value="16" min="1" max="50"></div>
+          <div class="row-value computed" id="battCapInfo"></div>
+        </div>
+        <div class="row">
+          <div class="row-label">Module Cost</div>
+          <div class="row-value computed" id="modCostInfo"></div>
+          <div class="row-value" id="modTotalDisplay"></div>
+        </div>
+        <div class="row">
+          <div class="row-label">Battery Kit</div>
+          <div class="row-value" id="battKitDisplay"></div>
+        </div>
+        <div class="row">
+          <div class="row-label">Inverter</div>
+          <div class="row-input"><select id="batteryInverter"></select></div>
+        </div>
+        <div class="toggle-row">
+          <span class="toggle-label">Garage Install</span>
+          <span class="toggle-val" id="garageVal">$0</span>
+          <label class="toggle"><input type="checkbox" id="garageInstall"><span class="track"></span></label>
+        </div>
+        <div class="row">
+          <div class="row-label">Fix Expenses & Margin</div>
+          <div class="row-input" style="max-width:80px;"><input type="number" id="batteryMarginDiscount" value="0" min="-100" max="100" step="1"></div>
+          <span style="font-size:0.85rem;color:#6b7280;">%</span>
+          <div class="row-value" id="battMarginDisplay"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ QUOTE OUTPUT ============ -->
+  <div class="card">
+    <div class="card-title output">Detailed Quote Breakdown</div>
+    <div class="card-body">
+      <div class="summary" id="summaryStrip"></div>
+      <table class="q-table"><tbody id="quoteBody"></tbody></table>
+    </div>
+  </div>
+
+  <!-- ============ SAVED QUOTES ============ -->
+  <div class="card">
+    <div class="card-title history">Saved Quotes</div>
+    <div class="card-body">
+      <ul class="history-list" id="historyList">
+        <li class="history-empty">No saved quotes yet.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/calculator.js"></script>
+</body>
+</html>

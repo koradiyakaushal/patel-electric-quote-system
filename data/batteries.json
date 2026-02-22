@@ -1,0 +1,278 @@
+[
+  {
+    "name": "SUNGROW BAT MODULE 3.2 KW",
+    "kwPerModule": 3.2,
+    "priceIncGst": 1617.0,
+    "kit": 1500.0
+  },
+  {
+    "name": "SUNGROW BAT MODULE 5 KW SBH",
+    "kwPerModule": 5.0,
+    "priceIncGst": 2695.0,
+    "kit": 1500.0
+  },
+  {
+    "name": "GOODWE ESA 10KW 1PH 24 KWH BAT ALL IN 1",
+    "kwPerModule": 24.0,
+    "priceIncGst": 11550.0,
+    "kit": 400.0
+  },
+  {
+    "name": "GOODWE ESA 10KW 1PH 32 KWH BAT ALL IN 1",
+    "kwPerModule": 32.0,
+    "priceIncGst": 13750.0,
+    "kit": 400.0
+  },
+  {
+    "name": "GOODWE ESA 10KW 1PH 40 KWH BAT ALL IN 1",
+    "kwPerModule": 40.0,
+    "priceIncGst": 16390.0,
+    "kit": 400.0
+  },
+  {
+    "name": "GOODWE ESA 10KW 1PH 48 KWH BAT ALL IN 1",
+    "kwPerModule": 48.0,
+    "priceIncGst": 18920.0,
+    "kit": 400.0
+  },
+  {
+    "name": "GOODWE GW8.3 BAT D G20",
+    "kwPerModule": 8.0,
+    "priceIncGst": 2860.0,
+    "kit": 0
+  },
+  {
+    "name": "GOODWE 3.2",
+    "kwPerModule": 3.2,
+    "priceIncGst": 990.0,
+    "kit": 800.0
+  },
+  {
+    "name": "TESLA PW2 13",
+    "kwPerModule": 13.0,
+    "priceIncGst": 0.0,
+    "kit": 0
+  },
+  {
+    "name": "BYD HVM 2.76",
+    "kwPerModule": 2.76,
+    "priceIncGst": 1540.0,
+    "kit": 780.0
+  },
+  {
+    "name": "ALPHA ESS SMILE 5 13.3 WITH iNVERTER",
+    "kwPerModule": 13.3,
+    "priceIncGst": 5940.0,
+    "kit": 0
+  },
+  {
+    "name": "ALPHA ESS SMIILE 5 26.6 WITH INVERTER",
+    "kwPerModule": 26.6,
+    "priceIncGst": 11440.0,
+    "kit": 0
+  },
+  {
+    "name": "ALPHA ESS SMILE M BAT WITH 5 KW  INV 30KWH PACKAGE",
+    "kwPerModule": 30.0,
+    "priceIncGst": 11000.0,
+    "kit": 0
+  },
+  {
+    "name": "ALPHA ESS G3-B5 20.2 kwh BAT WITH AC COU INVERTER",
+    "kwPerModule": 19.2,
+    "priceIncGst": 8085.0,
+    "kit": 200.0
+  },
+  {
+    "name": "ALPHA ESS G3-S5 30.3kwh WITH HYBRID INVERTER ( 3 Bat)",
+    "kwPerModule": 28.8,
+    "priceIncGst": 12100.0,
+    "kit": 200.0
+  },
+  {
+    "name": "ALPHA ESS G3-S5 20.2kwh WITH HYBRID INVERTER (2 BAT )",
+    "kwPerModule": 19.2,
+    "priceIncGst": 8250.0,
+    "kit": 200.0
+  },
+  {
+    "name": "3p 10kw Inverter, 8.2kwh battery",
+    "kwPerModule": 8.2,
+    "priceIncGst": 8138.9,
+    "kit": 0
+  },
+  {
+    "name": "Secondary battery for T10, 8,2kwh",
+    "kwPerModule": 8.2,
+    "priceIncGst": 4948.9,
+    "kit": 0
+  },
+  {
+    "name": "IPORTISESGE ALOE PRO WITH AC COUPLE INV",
+    "kwPerModule": 19.2,
+    "priceIncGst": 6930.0,
+    "kit": 0
+  },
+  {
+    "name": "Neovolt 5 Kw inv with 19.2 Kwh Battery (2 BAT) kit",
+    "kwPerModule": 18.2,
+    "priceIncGst": 7480.0,
+    "kit": 250.0
+  },
+  {
+    "name": "Neovolt 5 Kw inv with 28.8 Kwh Battery(3 BAT )kit",
+    "kwPerModule": 27.3,
+    "priceIncGst": 10230.0,
+    "kit": 250.0
+  },
+  {
+    "name": "BW-BAT-9.6P Neovolt 9.6kW BAT",
+    "kwPerModule": 9.1,
+    "priceIncGst": 3025.0,
+    "kit": 0
+  },
+  {
+    "name": "BW-BAT-4.8S Neovolt 4.8kW BAT FOR 3 PH",
+    "kwPerModule": 4.6,
+    "priceIncGst": 1980.0,
+    "kit": 0
+  },
+  {
+    "name": "SieB-H3200-F Battery Swatten 3.2",
+    "kwPerModule": 3.2,
+    "priceIncGst": 1166.0,
+    "kit": 850.0
+  },
+  {
+    "name": "FOX ESS EQ series package with 5 KW INV  27.96 KWH 1PH",
+    "kwPerModule": 27.96,
+    "priceIncGst": 10450.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS EQ series package with 8 KWINV  1PH 32.62 KWH",
+    "kwPerModule": 32.62,
+    "priceIncGst": 12540.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS EQ series package with 5 KWINV  1PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 14740.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS EQ series package with 10 KWINV  1PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 15400.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS EQ series package with 10 KWINV  3PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 15730.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 package with 10 KWINV  1PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 15400.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 package with 10 KWINV  3PH  47.93 KWH",
+    "kwPerModule": 47.93,
+    "priceIncGst": 17600.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 package with 10 KWINV  3PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 15840.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 package with 5 KWINV  1PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 14740.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 package with 5 KWINV  3PH  41.93 KWH",
+    "kwPerModule": 41.93,
+    "priceIncGst": 15290.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS EQ4800M 4.66 KWH",
+    "kwPerModule": 4.66,
+    "priceIncGst": 1540.0,
+    "kit": 200.0
+  },
+  {
+    "name": "Growatt 5 Kw 20 Kwh battery all in one",
+    "kwPerModule": 20.0,
+    "priceIncGst": 8140.0,
+    "kit": 0
+  },
+  {
+    "name": "ANKER 5 KW BAT FOR  X1-P6K-S 6 KW 1PH AC COUPLE HYBRID",
+    "kwPerModule": 5.0,
+    "priceIncGst": 2530.0,
+    "kit": 0
+  },
+  {
+    "name": "ANKER 5 KW BAT FOR ALL HYBRID INV X1-B5H",
+    "kwPerModule": 5.0,
+    "priceIncGst": 2530.0,
+    "kit": 0
+  },
+  {
+    "name": "SOLAX Bat T-BAT HS3.6",
+    "kwPerModule": 3.3,
+    "priceIncGst": 1199.0,
+    "kit": 900.0
+  },
+  {
+    "name": "ESYSUN HM5/6-10",
+    "kwPerModule": 9.78,
+    "priceIncGst": 4950.0,
+    "kit": 300.0
+  },
+  {
+    "name": "ESYSUN HM5/6-15",
+    "kwPerModule": 14.45,
+    "priceIncGst": 6380.0,
+    "kit": 300.0
+  },
+  {
+    "name": "ESYSUN HM5/6-20",
+    "kwPerModule": 20.0,
+    "priceIncGst": 7975.0,
+    "kit": 300.0
+  },
+  {
+    "name": "ESYSUN HM5/6-25",
+    "kwPerModule": 24.32,
+    "priceIncGst": 9405.0,
+    "kit": 300.0
+  },
+  {
+    "name": "ESYSUN HM5/6-30",
+    "kwPerModule": 29.18,
+    "priceIncGst": 10890.0,
+    "kit": 300.0
+  },
+  {
+    "name": "Sigenstor BAT 5.0",
+    "kwPerModule": 5.2,
+    "priceIncGst": 2975.5,
+    "kit": 0
+  },
+  {
+    "name": "Sigenstor BAT 8.0",
+    "kwPerModule": 7.8,
+    "priceIncGst": 3685.0,
+    "kit": 0
+  }
+]

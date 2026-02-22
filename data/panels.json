@@ -1,0 +1,86 @@
+[
+  {
+    "name": "TRINA VERTEX S+440",
+    "watts": 440.0,
+    "centsPerWatt": 0.195,
+    "priceIncGst": 94.38
+  },
+  {
+    "name": "Jinko 510 n tiger",
+    "watts": 510.0,
+    "centsPerWatt": 0.215,
+    "priceIncGst": 120.615
+  },
+  {
+    "name": "Jinko 475 n tiger",
+    "watts": 475.0,
+    "centsPerWatt": 0.21,
+    "priceIncGst": 109.725
+  },
+  {
+    "name": "Jinko 440 n tiger Black",
+    "watts": 440.0,
+    "centsPerWatt": 0.215,
+    "priceIncGst": 104.06
+  },
+  {
+    "name": "Recalpha 470AA Pure -RX",
+    "watts": 470.0,
+    "centsPerWatt": 0.51,
+    "priceIncGst": 263.67
+  },
+  {
+    "name": "Rec twin peak 5 405",
+    "watts": 410.0,
+    "centsPerWatt": 0.39,
+    "priceIncGst": 175.89
+  },
+  {
+    "name": "JAM54D40-440",
+    "watts": 440.0,
+    "centsPerWatt": 0.195,
+    "priceIncGst": 94.38
+  },
+  {
+    "name": "JAM54D41-440 BLACK  bificial",
+    "watts": 440.0,
+    "centsPerWatt": 0.2,
+    "priceIncGst": 96.8
+  },
+  {
+    "name": "JAM54D40-475/LR",
+    "watts": 475.0,
+    "centsPerWatt": 0.195,
+    "priceIncGst": 101.8875
+  },
+  {
+    "name": "AIKO-A475-MAH54MW",
+    "watts": 475.0,
+    "centsPerWatt": 0.25,
+    "priceIncGst": 130.625
+  },
+  {
+    "name": "REC460AA PURE RX",
+    "watts": 460.0,
+    "centsPerWatt": 0.47,
+    "priceIncGst": 237.82
+  },
+  {
+    "name": "Candadian CS 6.2-48TD-465",
+    "watts": 465.0,
+    "centsPerWatt": 0.19,
+    "priceIncGst": 97.185
+  },
+  {
+    "name": "Longi LR5-54HTH 470W",
+    "watts": 470.0,
+    "centsPerWatt": 0.215,
+    "priceIncGst": 111.155
+  },
+  {
+    "name": "Longi LR5-54HTH 440W",
+    "watts": 440.0,
+    "centsPerWatt": 0.195,
+    "priceIncGst": 94.38
+  }
+]
