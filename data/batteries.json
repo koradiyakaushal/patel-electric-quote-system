@@ -6,106 +6,172 @@
     "kit": 1500.0
   },
   {
+    "name": "SUNGROW 20 KW SBH BAT WITH 10 KW HYBRID INV 1 PH PAC",
+    "kwPerModule": 20.0,
+    "priceIncGst": 11990.0,
+    "kit": 0.0
+  },
+  {
+    "name": "SUNGROW 20 KW SBH BAT WITH 10 KW HYBRID INV 3 PH PAC",
+    "kwPerModule": 20.0,
+    "priceIncGst": 12650.0,
+    "kit": 0.0
+  },
+  {
+    "name": "SUNGROW 30 KW SBH BAT WITH 10 KW HYBRID INV 1 PH PAC",
+    "kwPerModule": 30.0,
+    "priceIncGst": 15730.0,
+    "kit": 0.0
+  },
+  {
+    "name": "SUNGROW 30 KW SBH BAT WITH 10 KW HYBRID INV 3 PH PAC",
+    "kwPerModule": 30.0,
+    "priceIncGst": 16390.0,
+    "kit": 0.0
+  },
+  {
     "name": "SUNGROW BAT MODULE 5 KW SBH",
     "kwPerModule": 5.0,
-    "priceIncGst": 2695.0,
+    "priceIncGst": 1705.0,
     "kit": 1500.0
   },
   {
-    "name": "GOODWE ESA 10KW 1PH 24 KWH BAT ALL IN 1",
+    "name": "GOODWE ETA 10KW 3PH 24 KWH BAT ALL IN 1",
     "kwPerModule": 24.0,
-    "priceIncGst": 11550.0,
-    "kit": 400.0
+    "priceIncGst": 9130.0,
+    "kit": 200.0
   },
   {
-    "name": "GOODWE ESA 10KW 1PH 32 KWH BAT ALL IN 1",
+    "name": "GOODWE ETA 10KW 3PH 32 KWH BAT ALL IN 1",
     "kwPerModule": 32.0,
-    "priceIncGst": 13750.0,
-    "kit": 400.0
+    "priceIncGst": 11044.0,
+    "kit": 200.0
   },
   {
-    "name": "GOODWE ESA 10KW 1PH 40 KWH BAT ALL IN 1",
+    "name": "GOODWE ETA 15KW 3PH 40 KWH BAT ALL IN 1",
     "kwPerModule": 40.0,
-    "priceIncGst": 16390.0,
-    "kit": 400.0
+    "priceIncGst": 13200.0,
+    "kit": 200.0
   },
   {
-    "name": "GOODWE ESA 10KW 1PH 48 KWH BAT ALL IN 1",
+    "name": "GOODWE ETA 10KW 3PH 40 KWH BAT ALL IN 1",
+    "kwPerModule": 40.0,
+    "priceIncGst": 13420.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE ETA 15KW 3PH 48 KWH BAT ALL IN 1",
     "kwPerModule": 48.0,
-    "priceIncGst": 18920.0,
-    "kit": 400.0
+    "priceIncGst": 15400.0,
+    "kit": 200.0
   },
   {
-    "name": "GOODWE GW8.3 BAT D G20",
+    "name": "GOODWE ETA 10KW 3PH 48 KWH BAT ALL IN 1",
+    "kwPerModule": 48.0,
+    "priceIncGst": 15620.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE EHA 10KW 1PH 24 KWH BAT ALL IN 1",
+    "kwPerModule": 24.0,
+    "priceIncGst": 9020.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE EHA 10KW 1PH 32 KWH BAT ALL IN 1",
+    "kwPerModule": 32.0,
+    "priceIncGst": 10989.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE EHA 10KW 1PH 35.4 KWH BAT ALL IN 1 ( 9 Kwh Modu)",
+    "kwPerModule": 35.4,
+    "priceIncGst": 11440.0,
+    "kit": 300.0
+  },
+  {
+    "name": "GOODWE EHA 10KW 1PH 40 KWH BAT ALL IN 1",
+    "kwPerModule": 40.0,
+    "priceIncGst": 13310.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE EHA 10KW 1PH 48 KWH BAT ALL IN 1",
+    "kwPerModule": 48.0,
+    "priceIncGst": 15510.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE lynx 3.2 kwh & 5 Kw EHB Inverter 22.4 Kwh package",
+    "kwPerModule": 22.4,
+    "priceIncGst": 5940.0,
+    "kit": 0.0
+  },
+  {
+    "name": "GOODWE GW9.0 BAT D G20",
+    "kwPerModule": 8.7,
+    "priceIncGst": 2420.0,
+    "kit": 200.0
+  },
+  {
+    "name": "GOODWE GW8.3 BAT D G21",
     "kwPerModule": 8.0,
-    "priceIncGst": 2860.0,
-    "kit": 0
+    "priceIncGst": 2145.0,
+    "kit": 0.0
   },
   {
     "name": "GOODWE 3.2",
     "kwPerModule": 3.2,
-    "priceIncGst": 990.0,
-    "kit": 800.0
+    "priceIncGst": 759.0,
+    "kit": 600.0
   },
   {
     "name": "TESLA PW2 13",
     "kwPerModule": 13.0,
     "priceIncGst": 0.0,
-    "kit": 0
+    "kit": 0.0
   },
   {
     "name": "BYD HVM 2.76",
     "kwPerModule": 2.76,
-    "priceIncGst": 1540.0,
-    "kit": 780.0
+    "priceIncGst": 1320.0,
+    "kit": 900.0
   },
   {
-    "name": "ALPHA ESS SMILE 5 13.3 WITH iNVERTER",
-    "kwPerModule": 13.3,
-    "priceIncGst": 5940.0,
-    "kit": 0
-  },
-  {
-    "name": "ALPHA ESS SMIILE 5 26.6 WITH INVERTER",
-    "kwPerModule": 26.6,
-    "priceIncGst": 11440.0,
-    "kit": 0
-  },
-  {
-    "name": "ALPHA ESS SMILE M BAT WITH 5 KW  INV 30KWH PACKAGE",
-    "kwPerModule": 30.0,
-    "priceIncGst": 11000.0,
-    "kit": 0
+    "name": "ALPHA ESS SMILE M BAT WITH M10 KW  INV 27.99 KWH PACKAGE",
+    "kwPerModule": 27.99,
+    "priceIncGst": 7590.0,
+    "kit": 400.0
   },
   {
     "name": "ALPHA ESS G3-B5 20.2 kwh BAT WITH AC COU INVERTER",
     "kwPerModule": 19.2,
     "priceIncGst": 8085.0,
-    "kit": 200.0
+    "kit": 0.0
   },
   {
     "name": "ALPHA ESS G3-S5 30.3kwh WITH HYBRID INVERTER ( 3 Bat)",
     "kwPerModule": 28.8,
-    "priceIncGst": 12100.0,
-    "kit": 200.0
+    "priceIncGst": 11880.0,
+    "kit": 0.0
   },
   {
     "name": "ALPHA ESS G3-S5 20.2kwh WITH HYBRID INVERTER (2 BAT )",
     "kwPerModule": 19.2,
     "priceIncGst": 8250.0,
-    "kit": 200.0
+    "kit": 0.0
   },
   {
-    "name": "3p 10kw Inverter, 8.2kwh battery",
-    "kwPerModule": 8.2,
-    "priceIncGst": 8138.9,
-    "kit": 0
+    "name": "HICONICS 30 kwh with 6 Kw inverter",
+    "kwPerModule": 30.0,
+    "priceIncGst": 8470.0,
+    "kit": 0.0
   },
   {
-    "name": "Secondary battery for T10, 8,2kwh",
-    "kwPerModule": 8.2,
-    "priceIncGst": 4948.9,
-    "kit": 0
+    "name": "Fronius Reserva Pro 3.98",
+    "kwPerModule": 3.98,
+    "priceIncGst": 2046.0,
+    "kit": 1900.0
   },
   {
     "name": "IPORTISESGE ALOE PRO WITH AC COUPLE INV",
@@ -116,26 +182,26 @@
   {
     "name": "Neovolt 5 Kw inv with 19.2 Kwh Battery (2 BAT) kit",
     "kwPerModule": 18.2,
-    "priceIncGst": 7480.0,
+    "priceIncGst": 7040.0,
     "kit": 250.0
   },
   {
     "name": "Neovolt 5 Kw inv with 28.8 Kwh Battery(3 BAT )kit",
     "kwPerModule": 27.3,
-    "priceIncGst": 10230.0,
+    "priceIncGst": 9350.0,
     "kit": 250.0
   },
   {
     "name": "BW-BAT-9.6P Neovolt 9.6kW BAT",
     "kwPerModule": 9.1,
-    "priceIncGst": 3025.0,
-    "kit": 0
+    "priceIncGst": 2585.0,
+    "kit": 0.0
   },
   {
     "name": "BW-BAT-4.8S Neovolt 4.8kW BAT FOR 3 PH",
     "kwPerModule": 4.6,
     "priceIncGst": 1980.0,
-    "kit": 0
+    "kit": 0.0
   },
   {
     "name": "SieB-H3200-F Battery Swatten 3.2",
@@ -144,135 +210,177 @@
     "kit": 850.0
   },
   {
-    "name": "FOX ESS EQ series package with 5 KW INV  27.96 KWH 1PH",
-    "kwPerModule": 27.96,
-    "priceIncGst": 10450.0,
-    "kit": 200.0
-  },
-  {
-    "name": "FOX ESS EQ series package with 8 KWINV  1PH 32.62 KWH",
-    "kwPerModule": 32.62,
-    "priceIncGst": 12540.0,
-    "kit": 200.0
-  },
-  {
-    "name": "FOX ESS EQ series package with 5 KWINV  1PH  41.93 KWH",
+    "name": "FOX ESS CQ6 package with 5 KWINV  3PH  41.76 KWH",
     "kwPerModule": 41.93,
-    "priceIncGst": 14740.0,
+    "priceIncGst": 1100.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS EQ series package with 10 KWINV  1PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 15400.0,
+    "name": "FOX ESS CQ7 package with 5 KWINV  1PH  27.84 KWH",
+    "kwPerModule": 27.84,
+    "priceIncGst": 8657.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS EQ series package with 10 KWINV  3PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 15730.0,
+    "name": "FOX ESS CQ7 package with 5 KWINV  1PH  23.3 KWH",
+    "kwPerModule": 23.3,
+    "priceIncGst": 8690.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS CQ6 package with 10 KWINV  1PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 15400.0,
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  1PH  41.76 KWH",
+    "kwPerModule": 41.76,
+    "priceIncGst": 11000.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS CQ6 package with 10 KWINV  3PH  47.93 KWH",
-    "kwPerModule": 47.93,
-    "priceIncGst": 17600.0,
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  1PH  48.72 KWH",
+    "kwPerModule": 48.72,
+    "priceIncGst": 12760.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS CQ6 package with 10 KWINV  3PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 15840.0,
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  3PH  34.80 KWH",
+    "kwPerModule": 34.8,
+    "priceIncGst": 10010.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS CQ6 package with 5 KWINV  1PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 14740.0,
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  1PH  27.84 KWH",
+    "kwPerModule": 27.84,
+    "priceIncGst": 8580.0,
     "kit": 200.0
   },
   {
-    "name": "FOX ESS CQ6 package with 5 KWINV  3PH  41.93 KWH",
-    "kwPerModule": 41.93,
-    "priceIncGst": 15290.0,
+    "name": "FOX ESS CQ7 package with 5 KWINV  3PH  27.84 KWH",
+    "kwPerModule": 27.84,
+    "priceIncGst": 8690.0,
     "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  3PH  27.84 KWH",
+    "kwPerModule": 27.84,
+    "priceIncGst": 8910.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  3PH  34.80 KWH",
+    "kwPerModule": 34.8,
+    "priceIncGst": 10340.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ7 package with 9.9 KWINV  3PH  41.76 KWH",
+    "kwPerModule": 41.76,
+    "priceIncGst": 11110.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ7 package with 15 KWINV  3PH  41.76 KWH",
+    "kwPerModule": 41.76,
+    "priceIncGst": 11220.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ7 package with 15 KWINV  3PH  48.72 KWH",
+    "kwPerModule": 48.72,
+    "priceIncGst": 13178.0,
+    "kit": 200.0
+  },
+  {
+    "name": "FOX ESS CQ6 5.99 KWH",
+    "kwPerModule": 5.99,
+    "priceIncGst": 1760.0,
+    "kit": 0.0
+  },
+  {
+    "name": "FOX ESS CQ7 6.96 KWH",
+    "kwPerModule": 6.96,
+    "priceIncGst": 1628.0,
+    "kit": 0.0
   },
   {
     "name": "FOX ESS EQ4800M 4.66 KWH",
     "kwPerModule": 4.66,
-    "priceIncGst": 1540.0,
-    "kit": 200.0
+    "priceIncGst": 1287.0,
+    "kit": 0.0
   },
   {
     "name": "Growatt 5 Kw 20 Kwh battery all in one",
     "kwPerModule": 20.0,
     "priceIncGst": 8140.0,
-    "kit": 0
+    "kit": 0.0
   },
   {
     "name": "ANKER 5 KW BAT FOR  X1-P6K-S 6 KW 1PH AC COUPLE HYBRID",
     "kwPerModule": 5.0,
     "priceIncGst": 2530.0,
-    "kit": 0
+    "kit": 0.0
   },
   {
     "name": "ANKER 5 KW BAT FOR ALL HYBRID INV X1-B5H",
     "kwPerModule": 5.0,
     "priceIncGst": 2530.0,
-    "kit": 0
+    "kit": 0.0
   },
   {
-    "name": "SOLAX Bat T-BAT HS3.6",
-    "kwPerModule": 3.3,
-    "priceIncGst": 1199.0,
-    "kit": 900.0
+    "name": "SOLAX Bat T-BAT HS5",
+    "kwPerModule": 5.0,
+    "priceIncGst": 1375.0,
+    "kit": 650.0
   },
   {
-    "name": "ESYSUN HM5/6-10",
+    "name": "ESYSUN HM5/6-10 All IN ONE WITH INV PRICE",
     "kwPerModule": 9.78,
     "priceIncGst": 4950.0,
-    "kit": 300.0
+    "kit": 200.0
   },
   {
-    "name": "ESYSUN HM5/6-15",
+    "name": "ESYSUN HM5/6-15 ALL IN ONE WITH INV PRICE",
     "kwPerModule": 14.45,
     "priceIncGst": 6380.0,
-    "kit": 300.0
+    "kit": 200.0
   },
   {
-    "name": "ESYSUN HM5/6-20",
+    "name": "ESYSUN HM5/6-20 ALL IN ONE WITH INV PRICE",
     "kwPerModule": 20.0,
     "priceIncGst": 7975.0,
-    "kit": 300.0
+    "kit": 200.0
   },
   {
-    "name": "ESYSUN HM5/6-25",
+    "name": "ESYSUN HM5/6-25 ALL IN ONE WITH INV PRICE",
     "kwPerModule": 24.32,
-    "priceIncGst": 9405.0,
-    "kit": 300.0
+    "priceIncGst": 9130.0,
+    "kit": 200.0
   },
   {
-    "name": "ESYSUN HM5/6-30",
+    "name": "ESYSUN HM5/6-30 ALL IN ONE WITH INV PRICE",
     "kwPerModule": 29.18,
-    "priceIncGst": 10890.0,
-    "kit": 300.0
+    "priceIncGst": 10230.0,
+    "kit": 200.0
+  },
+  {
+    "name": "Sig 46.92 Kwh Bat with 10 KW 1 ph inverter package",
+    "kwPerModule": 46.92,
+    "priceIncGst": 19580.0,
+    "kit": 200.0
   },
   {
     "name": "Sigenstor BAT 5.0",
     "kwPerModule": 5.2,
-    "priceIncGst": 2975.5,
-    "kit": 0
+    "priceIncGst": 2090.0,
+    "kit": 300.0
+  },
+  {
+    "name": "Sigenstor BAT 10",
+    "kwPerModule": 9.04,
+    "priceIncGst": 2640.0,
+    "kit": 300.0
   },
   {
     "name": "Sigenstor BAT 8.0",
     "kwPerModule": 7.8,
-    "priceIncGst": 3685.0,
-    "kit": 0
+    "priceIncGst": 2528.9,
+    "kit": 300.0
   }
 ]

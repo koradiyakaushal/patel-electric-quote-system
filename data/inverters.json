@@ -3,7 +3,7 @@
     "name": "NO INVERTER",
     "phase": "1 PH",
     "priceIncGst": 0.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "PRIMO GEN 24  5 KW",
@@ -99,7 +99,7 @@
     "name": "SUNGROW 5 KW HYBRID SGR SH5 1PH",
     "phase": "1 PH",
     "priceIncGst": 1842.5,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 8 KW SGR SG8 1PH",
@@ -111,7 +111,7 @@
     "name": "SUNGROW 8 KW HYBRID SGR SH8 1PH",
     "phase": "1 PH",
     "priceIncGst": 2530.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 10 KW SGR SG ADA 1PH",
@@ -122,146 +122,164 @@
   {
     "name": "SUNGROW 10 KW HYBRID 1 PH 4 MPPT",
     "phase": "1 PH",
-    "priceIncGst": 2860.0,
-    "smartMeter": 0
+    "priceIncGst": 2970.0,
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 5 KW 3PH RT",
     "phase": "3 PH",
     "priceIncGst": 1430.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 5 KW 3PH SGR SH HYBRID",
     "phase": "3 PH",
     "priceIncGst": 3080.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 10 KW 3PH RT",
     "phase": "3 PH",
     "priceIncGst": 1815.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 10 KW SGR SH HYBRID 3 PH",
     "phase": "3 PH",
     "priceIncGst": 3630.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SUNGROW 15 KW 3 PH SGRT",
     "phase": "3 PH",
     "priceIncGst": 2145.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SUNGROW 15 KW 3 PH hybrid",
+    "name": "SUNGROW 15 KW 3 PH hybrid SH15T",
     "phase": "3 PH",
     "priceIncGst": 4389.0,
-    "smartMeter": 0
-  },
-  {
-    "name": "GOODWE DNS 6KW 1 PH",
-    "phase": "1 PH",
-    "priceIncGst": 847.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "GOODWE DNS 5KW 1 PH",
     "phase": "1 PH",
     "priceIncGst": 682.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "GOODWE GW5000N-EH 5KW 1 PH HYBRID",
     "phase": "1 PH",
-    "priceIncGst": 1595.0,
-    "smartMeter": 150.0
+    "priceIncGst": 935.0,
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE GW5000 EHB 5KW 1 PH HYBRID",
     "phase": "1 PH",
-    "priceIncGst": 1958.0,
-    "smartMeter": 150.0
-  },
-  {
-    "name": "GOODWE GW6000N-EH 5KW 1 PH HYBRID",
-    "phase": "1 ph",
-    "priceIncGst": 1980.0,
-    "smartMeter": 150.0
-  },
-  {
-    "name": "GOODWE MS 8.5KW 1 PH",
-    "phase": "1 PH",
-    "priceIncGst": 1078.0,
-    "smartMeter": 0
-  },
-  {
-    "name": "GOODWE EHB 8.6 KW 1 PH HYBRID",
-    "phase": "1 PH",
-    "priceIncGst": 2194.5,
-    "smartMeter": 150.0
-  },
-  {
-    "name": "GOODWE MS 10 KW 1 PH",
-    "phase": "1 PH",
-    "priceIncGst": 1155.0,
-    "smartMeter": 0
+    "priceIncGst": 1045.0,
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE  ALL in one GW 5K-EHA 1 PH HYBRID",
     "phase": "1PH",
     "priceIncGst": 1320.0,
-    "smartMeter": 150.0
+    "smartMeter": 200.0
+  },
+  {
+    "name": "GOODWE DNS 6KW 1 PH",
+    "phase": "1 PH",
+    "priceIncGst": 847.0,
+    "smartMeter": 0.0
+  },
+  {
+    "name": "GOODWE GW6000N-EH 6KW 1 PH HYBRID",
+    "phase": "1 ph",
+    "priceIncGst": 1980.0,
+    "smartMeter": 200.0
+  },
+  {
+    "name": "GOODWE MS 8.5KW 1 PH",
+    "phase": "1 PH",
+    "priceIncGst": 1078.0,
+    "smartMeter": 0.0
+  },
+  {
+    "name": "GOODWE EHB 8.6 KW 1 PH HYBRID",
+    "phase": "1 PH",
+    "priceIncGst": 1155.0,
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE  ALL in one GW 9.99K-EHA 1 PH HYBRID",
     "phase": "1PH",
     "priceIncGst": 2090.0,
-    "smartMeter": 150.0
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE  EHB 9.99 KW 1 PH HYBRID",
     "phase": "1 PH",
-    "priceIncGst": 2370.5,
-    "smartMeter": 150.0
+    "priceIncGst": 1320.0,
+    "smartMeter": 200.0
+  },
+  {
+    "name": "GOODWE MS 10 KW 1 PH",
+    "phase": "1 PH",
+    "priceIncGst": 1155.0,
+    "smartMeter": 0.0
   },
   {
     "name": "GOODWE 5 KW 3PH SDT",
     "phase": "3 PH",
     "priceIncGst": 1089.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "GOODWE 5KW 3PH ET HYBRID",
     "phase": "3 PH",
     "priceIncGst": 2293.5,
-    "smartMeter": 0
+    "smartMeter": 0.0
+  },
+  {
+    "name": "GOODWE  ALL in one GW 5-ETA-G20 3 PH HYBRID",
+    "phase": "3PH",
+    "priceIncGst": 1980.0,
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE 9.9KW 3PH DT",
     "phase": "3 PH",
     "priceIncGst": 1402.5,
-    "smartMeter": 0
+    "smartMeter": 0.0
+  },
+  {
+    "name": "GOODWE  ALL in one GW 9.99K-ETA-G20 3 PH HYBRID",
+    "phase": "3PH",
+    "priceIncGst": 2200.0,
+    "smartMeter": 200.0
   },
   {
     "name": "GOODWE 9.9 KW 3 ET G2 PH HYBRID",
     "phase": "3 PH",
-    "priceIncGst": 2744.5,
+    "priceIncGst": 1375.0,
     "smartMeter": 150.0
+  },
+  {
+    "name": "GOODWE 15 KW 3 ET G2 PH HYBRID",
+    "phase": "3 PH",
+    "priceIncGst": 1595.0,
+    "smartMeter": 150.0
+  },
+  {
+    "name": "GOODWE  ALL in one GW 15K-ETA-G20 3 PH HYBRID",
+    "phase": "3PH",
+    "priceIncGst": 2420.0,
+    "smartMeter": 200.0
   },
   {
     "name": "Goodwe 15 Kw 3 pahse au dt",
     "phase": "3 PH",
     "priceIncGst": 1650.0,
-    "smartMeter": 0
-  },
-  {
-    "name": "Goodwe 15 Kw 3 pahse hybrid GW15K-ET 20",
-    "phase": "3 PH",
-    "priceIncGst": 3850.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SMA SUNNY BOY 5 kW 1PH",
@@ -309,103 +327,109 @@
     "name": "ALPHA ESS SMILE  M5 INVERTER",
     "phase": "1 PH",
     "priceIncGst": 1925.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
+  },
+  {
+    "name": "ALPHA ESS SMILE  G3 HYBRID INVERTER",
+    "phase": "1 PH",
+    "priceIncGst": 1650.0,
+    "smartMeter": 0.0
   },
   {
     "name": "1 phase 5KW inveter solax X1-VAST",
     "phase": "1 PH",
     "priceIncGst": 1485.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "1 phase 10KW inveter solax X1-VAST",
     "phase": "1 PH",
     "priceIncGst": 2640.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "3 Phase 5KW inveter solax X3-HYBRID-G4",
     "phase": "3 PH",
     "priceIncGst": 1925.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "3 Phase 10KW inveter solax X3-HYBRID-G4",
     "phase": "3 PH",
     "priceIncGst": 2530.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-5kW-SH Swatten 5kW Single Phase Hybrid Inverter 2 MPPT",
     "phase": "1PH",
     "priceIncGst": 1408.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-6kW-SH watten 6kW Single Phase Hybrid Inverter 2 MPPT",
     "phase": "1PH",
     "priceIncGst": 1518.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-8kW-SH Swatten 8kW Single Phase Hybrid Inverter 4 MPPT",
     "phase": "1PH",
     "priceIncGst": 2255.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-10KW-SH Swatten 10kW Single Phase Hybrid Inverter 4 MPPТ",
+    "name": "SiH-10KW-SH Swatten 10kW Single Phase Hybrid Inverter 4 MPP\u0422",
     "phase": "1PH",
     "priceIncGst": 2420.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-5kW-TH Swatten 5kW Three Phase Hybrid Inverter 2 MPPT",
     "phase": "3PH",
     "priceIncGst": 1980.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-8kW-TH Swatten 8kW Three Phase Hybrid Inverter 2 MPPT",
     "phase": "3PH",
     "priceIncGst": 2200.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "SiH-10kW-TH Swatten 10kW Three Phase Hybrid Inverter 2 MPPT",
     "phase": "3PH",
     "priceIncGst": 2519.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-10kW-TH Swatten 10kW Three Phase Hybrid Inverter 3 MPPТ Pro series",
+    "name": "SiH-10kW-TH Swatten 10kW Three Phase Hybrid Inverter 3 MPP\u0422 Pro series",
     "phase": "3PH",
     "priceIncGst": 2860.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-15kW-TH Swatten 15kW Three Phase Hybrid Inverter 3 MPPТ",
+    "name": "SiH-15kW-TH Swatten 15kW Three Phase Hybrid Inverter 3 MPP\u0422",
     "phase": "3PH",
     "priceIncGst": 3410.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-20kW-TH Swatten 20kW Three Phase Hybrid Inverter 3 MPPТ",
+    "name": "SiH-20kW-TH Swatten 20kW Three Phase Hybrid Inverter 3 MPP\u0422",
     "phase": "3PH",
     "priceIncGst": 3960.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-25kW-TH Swatten 25kW Three Phase Hybrid Inverter 2 MPPТ",
+    "name": "SiH-25kW-TH Swatten 25kW Three Phase Hybrid Inverter 2 MPP\u0422",
     "phase": "3PH",
     "priceIncGst": 4730.0,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
-    "name": "SiH-30kW-TH Swatten 30kW Three Phase Hybrid Inverter 2 MPPТ",
+    "name": "SiH-30kW-TH Swatten 30kW Three Phase Hybrid Inverter 2 MPP\u0422",
     "phase": "3PH",
     "priceIncGst": 5498.9,
-    "smartMeter": 0
+    "smartMeter": 0.0
   },
   {
     "name": "BW-INV-SPH5K Neovolt 5kW DC/AC Coupled Hybrid Inverter Singe Phase 2 MPPT",
@@ -414,7 +438,7 @@
     "smartMeter": 300.0
   },
   {
-    "name": "BW-INV-SPB5K Neovolt 5kW AC Coupled Hybrid Inverter Singe Phase 2 MPPТ",
+    "name": "BW-INV-SPB5K Neovolt 5kW AC Coupled Hybrid Inverter Singe Phase 2 MPP\u0422",
     "phase": "1PH",
     "priceIncGst": 1210.0,
     "smartMeter": 300.0
@@ -429,55 +453,55 @@
     "name": "FOX ESS F5000-G2 5 KW 1 PH NOMAL INV",
     "phase": "1 PH",
     "priceIncGst": 572.0,
-    "smartMeter": 150.0
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS H1-5.0-E-G2 5 KW 1 PH  HYBRID",
     "phase": "1 PH",
-    "priceIncGst": 1408.0,
-    "smartMeter": 150.0
+    "priceIncGst": 1133.0,
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS G8 8 KW 1 PH NOMAL INV 3MPPT",
     "phase": "1PH",
     "priceIncGst": 858.0,
-    "smartMeter": 150.0
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS FOX-KH8 8 KW 1 PH HYBRID 3MPPT",
     "phase": "1PH",
     "priceIncGst": 1925.0,
-    "smartMeter": 150.0
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS G10 10 KW 1 PH NORMAL  3MPPT",
     "phase": "1PH",
     "priceIncGst": 968.0,
-    "smartMeter": 150.0
+    "smartMeter": 0.0
   },
   {
-    "name": "FOX ESS FOX KH10 10 KW 1 PH HYBRID 4MPPT",
+    "name": "FOX ESS FOX KH 9.9 KW 1 PH HYBRID 4MPPT",
     "phase": "1PH",
-    "priceIncGst": 2145.0,
-    "smartMeter": 150.0
+    "priceIncGst": 1925.0,
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS H3-5.0-SMART 5 KW 3 PH HYBRID INV 3MPPT",
     "phase": "3PH",
-    "priceIncGst": 1925.0,
-    "smartMeter": 450.0
+    "priceIncGst": 1736.9,
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS H3-10.0-SMART 10 KW 3 PH HYBRID INV 3MPPT",
     "phase": "3PH",
-    "priceIncGst": 2475.0,
-    "smartMeter": 450.0
+    "priceIncGst": 1923.9,
+    "smartMeter": 0.0
   },
   {
     "name": "FOX ESS H3-15.0-SMART 15 KW 3 PH HYBRID INV 3MPPT",
     "phase": "3PH",
-    "priceIncGst": 2915.0,
-    "smartMeter": 450.0
+    "priceIncGst": 1978.9,
+    "smartMeter": 0.0
   },
   {
     "name": "ANKER SOLIX X1-H5K-S 5 KW 1PH HYBRID",
@@ -525,66 +549,66 @@
     "name": "Sigenstor EC 5.0 SP",
     "phase": "1 PH",
     "priceIncGst": 1477.52,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 6.0 SP",
     "phase": "1 PH",
-    "priceIncGst": 1597.69,
-    "smartMeter": 150.0
+    "priceIncGst": 1597.695,
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 8.0 SP AU",
     "phase": "1 PH",
     "priceIncGst": 2729.87,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 10.0 SP AU",
     "phase": "1 PH",
-    "priceIncGst": 2942.39,
-    "smartMeter": 150.0
+    "priceIncGst": 2750.0,
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 12.0 SP AU",
     "phase": "1 PH",
-    "priceIncGst": 3156.18,
-    "smartMeter": 150.0
+    "priceIncGst": 3156.175,
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 5.0 TP AU",
     "phase": "3 PH",
     "priceIncGst": 2530.0,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 10.0 TP AU",
     "phase": "3 PH",
     "priceIncGst": 2929.74,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 15.0 TP AU",
     "phase": "3 PH",
-    "priceIncGst": 3862.05,
-    "smartMeter": 150.0
+    "priceIncGst": 3410.0,
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 20.0 TP AU",
     "phase": "3 PH",
-    "priceIncGst": 4407.26,
-    "smartMeter": 150.0
+    "priceIncGst": 3740.0,
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 25.0 TP AU",
     "phase": "3 PH",
     "priceIncGst": 55.66,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   },
   {
     "name": "Sigenstor EC 30.0 TP AU",
     "phase": "3 PH",
     "priceIncGst": 3195.39,
-    "smartMeter": 150.0
+    "smartMeter": 300.0
   }
 ]

@@ -1,86 +1,92 @@
 [
   {
-    "name": "TRINA VERTEX S+440",
-    "watts": 440.0,
-    "centsPerWatt": 0.195,
-    "priceIncGst": 94.38
+    "name": "TRINA VERTEX S+475",
+    "centsPerWatt": 0.24,
+    "watts": 475.0,
+    "priceIncGst": 125.4
   },
   {
     "name": "Jinko 510 n tiger",
+    "centsPerWatt": 0.25,
     "watts": 510.0,
-    "centsPerWatt": 0.215,
-    "priceIncGst": 120.615
+    "priceIncGst": 140.25
   },
   {
-    "name": "Jinko 475 n tiger",
+    "name": "Jinko 475 48QL-6 DV (NORMAL)",
+    "centsPerWatt": 0.245,
     "watts": 475.0,
-    "centsPerWatt": 0.21,
-    "priceIncGst": 109.725
+    "priceIncGst": 128.0125
   },
   {
-    "name": "Jinko 440 n tiger Black",
-    "watts": 440.0,
-    "centsPerWatt": 0.215,
-    "priceIncGst": 104.06
+    "name": "Jinko 475 48QL-6 DB tiger Black",
+    "centsPerWatt": 0.26,
+    "watts": 475.0,
+    "priceIncGst": 135.85
   },
   {
     "name": "Recalpha 470AA Pure -RX",
-    "watts": 470.0,
     "centsPerWatt": 0.51,
+    "watts": 470.0,
     "priceIncGst": 263.67
   },
   {
     "name": "Rec twin peak 5 405",
-    "watts": 410.0,
     "centsPerWatt": 0.39,
+    "watts": 410.0,
     "priceIncGst": 175.89
   },
   {
     "name": "JAM54D40-440",
+    "centsPerWatt": 0.2,
     "watts": 440.0,
-    "centsPerWatt": 0.195,
-    "priceIncGst": 94.38
+    "priceIncGst": 96.8
   },
   {
     "name": "JAM54D41-440 BLACK  bificial",
-    "watts": 440.0,
     "centsPerWatt": 0.2,
+    "watts": 440.0,
     "priceIncGst": 96.8
   },
   {
     "name": "JAM54D40-475/LR",
+    "centsPerWatt": 0.24,
     "watts": 475.0,
-    "centsPerWatt": 0.195,
-    "priceIncGst": 101.8875
+    "priceIncGst": 125.4
   },
   {
     "name": "AIKO-A475-MAH54MW",
+    "centsPerWatt": 0.29,
     "watts": 475.0,
-    "centsPerWatt": 0.25,
-    "priceIncGst": 130.625
+    "priceIncGst": 151.525
   },
   {
     "name": "REC460AA PURE RX",
+    "centsPerWatt": 0.55,
     "watts": 460.0,
-    "centsPerWatt": 0.47,
-    "priceIncGst": 237.82
+    "priceIncGst": 278.3
   },
   {
     "name": "Candadian CS 6.2-48TD-465",
+    "centsPerWatt": 0.21,
     "watts": 465.0,
-    "centsPerWatt": 0.19,
-    "priceIncGst": 97.185
+    "priceIncGst": 107.415
   },
   {
-    "name": "Longi LR5-54HTH 470W",
-    "watts": 470.0,
-    "centsPerWatt": 0.215,
-    "priceIncGst": 111.155
+    "name": "Longi LR7-54HVH 475W",
+    "centsPerWatt": 0.255,
+    "watts": 475.0,
+    "priceIncGst": 133.2375
   },
   {
-    "name": "Longi LR5-54HTH 440W",
+    "name": "Longi LR5-54HTB 440W",
+    "centsPerWatt": 0.24,
     "watts": 440.0,
-    "centsPerWatt": 0.195,
-    "priceIncGst": 94.38
+    "priceIncGst": 116.16
+  },
+  {
+    "name": "Longi LR7-54HTH 475M",
+    "centsPerWatt": 0.24,
+    "watts": 440.0,
+    "priceIncGst": 116.16
   }
 ]
