@@ -70,33 +70,19 @@
     .battery-fields { transition: opacity 0.2s; }
     .battery-fields.off { opacity: 0.25; pointer-events: none; }
 
-    /* Quote output table */
-    .q-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    .q-table td { padding: 0.4rem 0.6rem; }
-    .q-table .sec td { background: #374151; color: #fff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
-    .q-table .sec.solar td { background: #1e40af; }
-    .q-table .sec.rebates td { background: #15803d; }
-    .q-table .sec.battery td { background: #7c3aed; }
-    .q-table .item td { border-bottom: 1px solid #f3f4f6; }
-    .q-table .item .lbl { color: #374151; }
-    .q-table .item .dtl { color: #9ca3af; font-size: 0.8rem; }
-    .q-table .item .amt { text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
-    .q-table .sub td { border-top: 2px solid #e5e7eb; font-weight: 700; background: #f9fafb; }
-    .q-table .sub .amt { text-align: right; }
-    .q-table .rebate .amt { color: #16a34a; }
-    .q-table .highlight td { background: #fff7ed; font-weight: 800; color: #f97316; }
-    .q-table .highlight .amt { text-align: right; }
-    .q-table .grand td { border-top: 3px solid #f97316; font-weight: 800; font-size: 1.05rem; background: #fef3c7; }
-    .q-table .grand .amt { text-align: right; }
+    /* Excel-style subtotal rows */
+    .row.subtotal { border-top: 2px solid #e5e7eb; border-bottom: none; margin-top: 0.25rem; }
+    .row.subtotal .row-label { color: #1a1a1a; }
+    .row.subtotal .row-value { font-size: 1rem; font-weight: 800; }
+    .rebate-val { color: #16a34a; }
 
-    /* Summary strip */
-    .summary { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
-    .summary .chip { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 0.5rem 0.75rem; flex: 1; min-width: 130px; }
-    .summary .chip .chip-label { font-size: 0.65rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; }
-    .summary .chip .chip-val { font-size: 1.1rem; font-weight: 800; }
-    .summary .chip.total { background: #1a1a1a; border-color: #1a1a1a; }
-    .summary .chip.total .chip-label { color: #9ca3af; }
-    .summary .chip.total .chip-val { color: #fff; }
+    /* The three totals, pinned to the bottom of the screen */
+    .totals { position: sticky; bottom: 0; z-index: 50; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; background: #1a1a1a; color: #fff; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); }
+    .totals .t-label { font-size: 0.65rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.04em; }
+    .totals .t-val { font-size: 1.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .totals .t-combined .t-val { color: #f97316; }
+    .totals .t-note { font-size: 0.65rem; color: #9ca3af; }
+    @media (max-width: 600px) { .totals { padding: 0.6rem 0.75rem; } .totals .t-val { font-size: 0.95rem; } }
 
     /* Quote history */
     .history-list { list-style: none; }
@@ -194,6 +180,10 @@
         <div class="row-input narrow"><input type="number" id="marginDiscount" value="0" min="0" max="100" step="1"><span class="unit">%</span></div>
         <div class="row-value" id="fixExpDisplay"></div>
       </div>
+      <div class="row subtotal">
+        <div class="row-label">Solar Subtotal</div>
+        <div class="row-value" id="solarSubtotal"></div>
+      </div>
 
     </div>
   </div>
@@ -207,6 +197,7 @@
         <label class="row-label" for="postcode">Postcode</label>
         <div class="row-input narrow"><input type="number" id="postcode" value="3978" min="0" max="9999"></div>
         <div class="row-value computed" id="zoneInfo"></div>
+        <div class="row-value rebate-val" id="stcVal"></div>
         <div class="row-note" id="stcWarn"></div>
       </div>
       <div class="toggle-row">
@@ -218,6 +209,10 @@
         <span class="toggle-label">Eligible Solar VIC 0% Int Loan</span>
         <span class="toggle-val" id="vicLoanVal">$0</span>
         <label class="toggle"><input type="checkbox" id="solarVicLoan" aria-label="Eligible Solar VIC 0% interest loan"><span class="track"></span></label>
+      </div>
+      <div class="row subtotal">
+        <div class="row-label">Total Rebates</div>
+        <div class="row-value rebate-val" id="totalRebatesVal"></div>
       </div>
 
     </div>
@@ -264,18 +259,25 @@
           <div class="row-input narrow"><input type="number" id="batteryMarginDiscount" value="0" min="-100" max="100" step="1"><span class="unit">%</span></div>
           <div class="row-value" id="battMarginDisplay"></div>
         </div>
+        <div class="row subtotal">
+          <div class="row-label">Battery Installation Cost</div>
+          <div class="row-value" id="battInstallVal"></div>
+        </div>
+        <div class="row">
+          <div class="row-label">Battery STC</div>
+          <div class="row-value computed" id="battStcInfo"></div>
+          <div class="row-value rebate-val" id="battStcVal"></div>
+        </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ============ QUOTE OUTPUT ============ -->
-  <div class="card">
-    <div class="card-title output">Detailed Quote Breakdown</div>
-    <div class="card-body">
-      <div class="summary" id="summaryStrip"></div>
-      <table class="q-table"><tbody id="quoteBody"></tbody></table>
-    </div>
+  <!-- ============ TOTALS (inc. GST) ============ -->
+  <div class="totals" aria-live="polite">
+    <div><div class="t-label">Solar only</div><div class="t-val" id="totalSolar">$0.00</div></div>
+    <div><div class="t-label">Battery only</div><div class="t-val" id="totalBattery">&mdash;</div></div>
+    <div class="t-combined"><div class="t-label">Solar + Battery</div><div class="t-val" id="totalCombined">&mdash;</div><div class="t-note" id="bundleNote"></div></div>
   </div>
 
   <!-- ============ SAVED QUOTES ============ -->

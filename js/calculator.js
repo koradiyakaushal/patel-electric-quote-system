@@ -35,7 +35,7 @@ async function loadData() {
       })));
     names.forEach((n, i) => { DATA[n] = files[i]; });
   } catch (e) {
-    $('quoteBody').innerHTML = `<tr><td class="load-error">Could not load price data: ${esc(e.message)}. Refresh the page to try again.</td></tr>`;
+    $('totalSolar').closest('.totals').outerHTML = `<div class="card load-error">Could not load price data: ${esc(e.message)}. Refresh the page to try again.</div>`;
     return false;
   }
   populateLists();
@@ -123,7 +123,6 @@ function fmt(val) {
   return (val < 0 ? '-$' : '$') + Math.abs(val).toLocaleString('en-AU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 const fmt0 = v => '$' + v.toLocaleString('en-AU');
-const pct = v => `${(v * 100).toFixed(0)}%`;
 
 // --- Form state (saved quotes) ---
 const STATE_FIELDS = {
@@ -235,7 +234,10 @@ function calculate() {
   $('installerCostDisplay').textContent = `${systemKw.toFixed(2)} kW × ${fmt0(R.installerPerKw)} = ${fmt(installerCost)}`;
   $('fixExpDisplay').textContent = `${fmt0(R.solarFixed)} → ${fmt(fixExpenses)}`;
 
-  $('zoneInfo').textContent = `${stc.zone} · STC ${fmt(stc.amount)}`;
+  $('solarSubtotal').textContent = fmt(solarTotal);
+  $('zoneInfo').textContent = `${stc.zone} · ${systemKw.toFixed(2)} kW STC`;
+  $('stcVal').textContent = fmt(-stc.amount);
+  $('totalRebatesVal').textContent = fmt(-totalRebates);
   setWarn('stcWarn', stcWarn);
   $('vicVal').textContent = fmt(R.solarVic);
   $('vicLoanVal').textContent = fmt(R.solarVicLoan);
@@ -247,64 +249,20 @@ function calculate() {
     $('modTotalDisplay').textContent = `× ${numModules} = ${fmt(moduleTotal)}`;
     $('battKitDisplay').textContent = fmt(battKit);
     $('battMarginDisplay').textContent = `${fmt0(R.batteryMargin)} → ${fmt(battMargin)}`;
+    $('battInstallVal').textContent = fmt(battTotal);
+    $('battStcInfo').textContent = `${battCapacity.toFixed(2)} kWh`;
+    $('battStcVal').textContent = fmt(-battSTC.amount);
     setWarn('battStcWarn', battWarn);
   } else {
     setWarn('battStcWarn', '');
   }
 
-  // ---- SUMMARY STRIP ----
-  $('summaryStrip').innerHTML = `
-    <div class="chip"><div class="chip-label">System</div><div class="chip-val">${systemKw.toFixed(1)} kW</div></div>
-    <div class="chip"><div class="chip-label">Solar</div><div class="chip-val">${fmt(solarTotal)}</div></div>
-    <div class="chip"><div class="chip-label">Rebates</div><div class="chip-val" style="color:#16a34a">${fmt(-totalRebates)}</div></div>
-    ${hasBattery ? `<div class="chip"><div class="chip-label">Battery ${battCapacity.toFixed(1)} kWh</div><div class="chip-val">${fmt(battUpfront)}</div></div>` : ''}
-    <div class="chip total"><div class="chip-label">${hasBattery ? 'Solar + Battery' : 'Customer'} Total</div><div class="chip-val">${fmt(grandTotal)}</div></div>
-  `;
+  // ---- THE THREE TOTALS (inc. GST) ----
+  $('totalSolar').textContent = fmt(solarAfterRebates);
+  $('totalBattery').textContent = hasBattery ? fmt(battUpfront) : '—';
+  $('totalCombined').textContent = hasBattery ? fmt(grandTotal) : '—';
+  $('bundleNote').textContent = hasBattery && bundleDiscount ? `incl. ${fmt0(bundleDiscount)} bundle discount` : '';
 
-  // ---- QUOTE TABLE ----
-  const rows = [];
-  const sec = (title, cls) => rows.push(`<tr class="sec ${cls}"><td colspan="3">${title}</td></tr>`);
-  const item = (lbl, dtl, amt, cls = 'item') => rows.push(`<tr class="${cls}"><td class="lbl">${lbl}</td><td class="dtl">${dtl}</td><td class="amt">${amt}</td></tr>`);
-  const sub = (lbl, amt) => rows.push(`<tr class="sub"><td colspan="2">${lbl}</td><td class="amt">${amt}</td></tr>`);
-  const disc = d => (d ? ` (${pct(d)} disc.)` : '');
-
-  sec('Solar System', 'solar');
-  item('Panel', `${esc(panel.name)} (${panel.watts}W) &times; ${numPanels}`, fmt(panelTotal));
-  item('Mounting', `${systemKw.toFixed(2)} kW &times; ${fmt0(R.mountingPerKw)}/kW`, fmt(mountingCost));
-  item('Inverter', esc(inverter.name), fmt(inverterCost));
-  item('Electrical Kit', phase3 ? '3 Phase' : '1 Phase', fmt(electricalKit));
-  if (doubleStoreyAmt) item('Double Storey', 'Surcharge', fmt(doubleStoreyAmt));
-  if (smartMeter) item('Smart Meter', '', fmt(smartMeter));
-  if (tiltAmt) item('Tilt Mounting', 'Surcharge', fmt(tiltAmt));
-  if (panelRemovalAmt) item('Old Panel Removal', '', fmt(panelRemovalAmt));
-  item('Installer Cost', `${systemKw.toFixed(2)} kW &times; ${fmt0(R.installerPerKw)}${disc(installerDiscount)}`, fmt(installerCost));
-  item('Fix Expenses & Margin', `${fmt0(R.solarFixed)}${disc(marginDiscount)}`, fmt(fixExpenses));
-  sub('Solar Subtotal', fmt(solarTotal));
-
-  sec('Rebates & Discounts', 'rebates');
-  item('STC Discount', `${stc.zone} &mdash; ${stc.size} kW${stcWarn ? ' <span class="warn">(nearest smaller)</span>' : ''}`, fmt(-stc.amount), 'item rebate');
-  if (solarVicAmt) item('Solar VIC Rebate', 'Eligible', fmt(-solarVicAmt), 'item rebate');
-  if (solarVicLoanAmt) item('Solar VIC 0% Int Loan', 'Eligible', fmt(-solarVicLoanAmt), 'item rebate');
-  sub('Total Rebates', fmt(-totalRebates));
-
-  rows.push(`<tr class="highlight"><td colspan="2">Total Inc. GST (Solar)</td><td class="amt">${fmt(solarAfterRebates)}</td></tr>`);
-
-  if (hasBattery) {
-    sec('Battery System', 'battery');
-    item('Battery Modules', `${esc(battery.name)} &times; ${numModules} (${battCapacity.toFixed(2)} kWh)`, fmt(moduleTotal));
-    item('Battery Kit', '', fmt(battKit));
-    if (battInvCost) item('Battery Inverter', esc(batteryInverter.name), fmt(battInvCost));
-    if (gatewayCost) item('Gateway', esc(gateway.name), fmt(gatewayCost));
-    item('Fix Expenses & Margin', `${fmt0(R.batteryMargin)}${batteryMarginAdj ? ` (${batteryMarginAdj > 0 ? '+' : ''}${pct(batteryMarginAdj)})` : ''}`, fmt(battMargin));
-    sub('Battery Installation Cost', fmt(battTotal));
-    item('Battery STC', `${battSTC.size} kWh${battWarn ? ' <span class="warn">(nearest smaller)</span>' : ''}`, fmt(-battSTC.amount), 'item rebate');
-    sub('Upfront Battery Price', fmt(battUpfront));
-    item('Solar + Battery Discount', '', fmt(-bundleDiscount), 'item rebate');
-  }
-
-  rows.push(`<tr class="grand"><td colspan="2">${hasBattery ? 'Battery Plus Solar Total' : 'Customer Total'}</td><td class="amt">${fmt(grandTotal)}</td></tr>`);
-
-  $('quoteBody').innerHTML = rows.join('');
   return grandTotal;
 }
 
