@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patel Electrical — Price Calculator</title>
+  <title>Patel Electrical Price Calculator</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23f97316'/%3E%3C/svg%3E">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,7 +17,7 @@
     .header .save-btn:hover { background: #ea580c; }
     .header .save-btn:active { transform: scale(0.97); }
 
-    /* Layout — single column, Excel-like stacked rows */
+    /* Layout: single column, Excel-like stacked rows */
     .main { max-width: 720px; margin: 0 auto; padding: 1rem; }
 
     /* Card sections */
@@ -30,7 +30,7 @@
     .card-title.history { background: #64748b; }
     .card-body { padding: 0.75rem 1rem; }
 
-    /* Form rows — each row = one Excel row */
+    /* Form rows: each row = one Excel row */
     .row { display: flex; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; gap: 0.75rem; flex-wrap: wrap; }
     .row:last-child { border-bottom: none; }
     .row-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; flex: 0 0 200px; }
@@ -54,7 +54,7 @@
       .row-value, .row-note { text-align: left; margin-left: 0; }
     }
 
-    /* Toggle switch — using <label> so clicking anywhere toggles */
+    /* Toggle switch: using <label> so clicking anywhere toggles */
     .toggle { position: relative; display: inline-flex; align-items: center; width: 44px; height: 24px; flex-shrink: 0; cursor: pointer; }
     .toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
     .toggle .track { position: absolute; inset: 0; background: #d1d5db; border-radius: 12px; transition: background 0.2s; }
@@ -108,7 +108,7 @@
 <body>
 
 <div class="header">
-  <h1><span class="brand">Patel Electrical</span> &mdash; Price Calculator</h1>
+  <h1><span class="brand">Patel Electrical</span> Price Calculator</h1>
   <button class="save-btn" onclick="saveQuote()">Save Quote</button>
 </div>
 
@@ -117,7 +117,7 @@
   <!-- Current quote ID -->
   <div style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
     <span style="font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; font-weight: 600;">Quote</span>
-    <span id="quoteId" style="font-weight: 800; font-size: 1rem; color: #374151;">#—</span>
+    <span id="quoteId" style="font-weight: 800; font-size: 1rem; color: #374151;">#</span>
     <button onclick="newQuote()" style="margin-left: auto; border: 1px solid #d1d5db; background: #fff; padding: 0.3rem 0.75rem; border-radius: 5px; font-size: 0.8rem; cursor: pointer; font-weight: 600;">+ New Quote</button>
   </div>
 
@@ -251,10 +251,6 @@
           <div class="row-input"><input id="batteryInverter" list="inverterList" autocomplete="off" placeholder="Type to search…"></div>
         </div>
         <div class="row">
-          <label class="row-label" for="gateway">Gateway</label>
-          <div class="row-input"><select id="gateway"><option value="">No gateway</option></select></div>
-        </div>
-        <div class="row">
           <label class="row-label" for="batteryMarginDiscount">Fix Expenses &amp; Margin</label>
           <div class="row-input narrow"><input type="number" id="batteryMarginDiscount" value="0" min="-100" max="100" step="1"><span class="unit">%</span></div>
           <div class="row-value" id="battMarginDisplay"></div>
@@ -276,8 +272,8 @@
   <!-- ============ TOTALS (inc. GST) ============ -->
   <div class="totals" aria-live="polite">
     <div><div class="t-label">Solar only</div><div class="t-val" id="totalSolar">$0.00</div></div>
-    <div><div class="t-label">Battery only</div><div class="t-val" id="totalBattery">&mdash;</div></div>
-    <div class="t-combined"><div class="t-label">Solar + Battery</div><div class="t-val" id="totalCombined">&mdash;</div><div class="t-note" id="bundleNote"></div></div>
+    <div><div class="t-label">Battery only</div><div class="t-val" id="totalBattery">Not included</div></div>
+    <div class="t-combined"><div class="t-label">Solar + Battery</div><div class="t-val" id="totalCombined">Not included</div><div class="t-note" id="bundleNote"></div></div>
   </div>
 
   <!-- ============ SAVED QUOTES ============ -->

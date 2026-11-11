@@ -8,7 +8,7 @@ The share link comes from a GitHub secret. It can point to a Google Sheet or to 
 uploaded .xlsx file in Google Drive, shared as "Anyone with the link - Viewer".
 
 What is read:
-  - Panels, Inverter, Battery, Gateway sheets  -> panels/inverters/batteries/gateways.json
+  - Panels, Inverter, Battery sheets  -> panels/inverters/batteries.json
   - STC PRICE and BAT STC PRICE sheets         -> stc.json
   - the fixed rates (mounting, installer, margins, rebates...) straight out of the
     formulas in the "CALCULATRE PRICE  HERE" sheet -> rates.json
@@ -45,10 +45,6 @@ SHEETS = {
     "batteries": {
         "sheet": "Battery",
         "columns": {"name": "B", "kwPerModule": "C", "priceIncGst": "F", "kit": "G"},
-    },
-    "gateways": {
-        "sheet": "Gateway",
-        "columns": {"name": "B", "priceIncGst": "E"},
     },
 }
 TEXT_FIELDS = {"name", "phase"}

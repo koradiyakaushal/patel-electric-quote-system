@@ -1,11 +1,11 @@
 // ============================================================
-// Patel Electrical — Price Calculator
+// Patel Electrical Price Calculator
 // Implements the "CALCULATRE PRICE  HERE" sheet from the price workbook.
 // All prices, rates and STC tables come from data/*.json, which
 // scripts/sync_pricelist.py builds from the workbook every hour.
 // ============================================================
 
-let DATA = { panels: [], inverters: [], batteries: [], gateways: [], stc: {}, rates: {} };
+let DATA = { panels: [], inverters: [], batteries: [], stc: {}, rates: {} };
 let currentQuoteId = null;
 
 const STORAGE_KEY = 'patel_quotes';
@@ -26,7 +26,7 @@ const SEARCH_FIELDS = {
 
 // --- Data Loading ---
 async function loadData() {
-  const names = ['panels', 'inverters', 'batteries', 'gateways', 'stc', 'rates'];
+  const names = ['panels', 'inverters', 'batteries', 'stc', 'rates'];
   try {
     const files = await Promise.all(names.map(n =>
       fetch(`data/${n}.json`, { cache: 'no-cache' }).then(r => { // always revalidate: prices change hourly
@@ -62,14 +62,6 @@ function populateLists() {
   fillList('panelList', DATA.panels, p => `${p.watts}W · ${fmt(p.priceIncGst)}`);
   fillList('inverterList', DATA.inverters, i => `${i.phase} · ${fmt(i.priceIncGst)}`);
   fillList('batteryList', DATA.batteries, b => `${b.kwPerModule} kWh · ${fmt(b.priceIncGst)}`);
-
-  const gw = $('gateway');
-  DATA.gateways.forEach((g, i) => {
-    const opt = document.createElement('option');
-    opt.value = String(i);
-    opt.textContent = `${g.name} (${fmt(g.priceIncGst)})`;
-    gw.appendChild(opt);
-  });
 }
 
 // --- Defaults ---
@@ -83,7 +75,6 @@ function setDefaults() {
   $('battery').value = pickDefault(DATA.batteries, 'GOODWE 3.2');
   $('batteryInverter').value = pickDefault(DATA.inverters, 'NO INVERTER');
   $('phase').value = is3Phase(byName(DATA.inverters, $('inverter').value)?.phase) ? '3 PH' : '1 PH';
-  $('gateway').value = '';
 }
 
 // --- Quote ID Generator (4-digit number) ---
@@ -127,7 +118,7 @@ const fmt0 = v => '$' + v.toLocaleString('en-AU');
 // --- Form state (saved quotes) ---
 const STATE_FIELDS = {
   value: ['panel', 'numPanels', 'inverter', 'phase', 'installerDiscount', 'marginDiscount', 'postcode',
-          'battery', 'numModules', 'batteryInverter', 'gateway', 'batteryMarginDiscount'],
+          'battery', 'numModules', 'batteryInverter', 'batteryMarginDiscount'],
   checked: ['doubleStorey', 'tiltMounting', 'panelRemoval', 'solarVic', 'solarVicLoan', 'batteryRequired'],
 };
 
@@ -143,7 +134,6 @@ function loadFormState(s) {
     if (s[id] === undefined) return; // quote saved before this field existed: keep default
     // Searchable fields only accept a name that is still in the price list
     if (SEARCH_FIELDS[id] && !byName(SEARCH_FIELDS[id](), s[id])) return;
-    if (id === 'gateway' && s[id] !== '' && !DATA.gateways[s[id]]) return;
     $(id).value = s[id];
   });
   STATE_FIELDS.checked.forEach(id => { if (s[id] !== undefined) $(id).checked = s[id]; });
@@ -198,21 +188,19 @@ function calculate() {
   const batteryRequired = $('batteryRequired').checked;
   const battery = byName(DATA.batteries, $('battery').value);
   const batteryInverter = byName(DATA.inverters, $('batteryInverter').value);
-  const gateway = DATA.gateways[$('gateway').value];
   const numModules = Math.max(0, parseInt($('numModules').value) || 0);
   const batteryMarginAdj = num('batteryMarginDiscount') / 100;
   const hasBattery = batteryRequired && !!battery;
 
-  let battCapacity = 0, moduleTotal = 0, battKit = 0, battInvCost = 0, gatewayCost = 0;
+  let battCapacity = 0, moduleTotal = 0, battKit = 0, battInvCost = 0;
   let battMargin = 0, battTotal = 0, battSTC = { amount: 0, exact: true }, battUpfront = 0, battWarn = '';
   if (hasBattery) {
     battCapacity = battery.kwPerModule * numModules;
     moduleTotal = battery.priceIncGst * numModules;
     battKit = battery.kit;
     battInvCost = batteryInverter ? batteryInverter.priceIncGst : 0;
-    gatewayCost = gateway ? gateway.priceIncGst : 0;
     battMargin = R.batteryMargin * (1 + batteryMarginAdj);
-    battTotal = moduleTotal + battKit + battInvCost + gatewayCost + battMargin;
+    battTotal = moduleTotal + battKit + battInvCost + battMargin;
     battSTC = lookupTable(DATA.stc.battery, battCapacity, 'kwh');
     battWarn = stcNote(battSTC, battCapacity, 'kWh');
     battUpfront = battTotal - battSTC.amount;
@@ -259,15 +247,15 @@ function calculate() {
 
   // ---- THE THREE TOTALS (inc. GST) ----
   $('totalSolar').textContent = fmt(solarAfterRebates);
-  $('totalBattery').textContent = hasBattery ? fmt(battUpfront) : '—';
-  $('totalCombined').textContent = hasBattery ? fmt(grandTotal) : '—';
+  $('totalBattery').textContent = hasBattery ? fmt(battUpfront) : 'Not included';
+  $('totalCombined').textContent = hasBattery ? fmt(grandTotal) : 'Not included';
   $('bundleNote').textContent = hasBattery && bundleDiscount ? `incl. ${fmt0(bundleDiscount)} bundle discount` : '';
 
   return grandTotal;
 }
 
 // ================================================================
-// QUOTE HISTORY — localStorage
+// QUOTE HISTORY (localStorage)
 // ================================================================
 
 function getQuotes() {

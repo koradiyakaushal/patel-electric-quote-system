@@ -2,7 +2,7 @@
 
 The website's panel, inverter and battery prices come from the existing price
 workbook in Google Drive. A GitHub Action reads it every hour and republishes
-the site. Edit prices in the sheet only — no code changes needed.
+the site. Edit prices in the sheet only, no code changes needed.
 
 ## One-time setup
 
@@ -24,7 +24,6 @@ permission is publishing the website.
 | Panels | B name, C cents/watt, D watts, G price inc GST | `data/panels.json` |
 | Inverter | C name, D phase, G price inc GST, H smart meter | `data/inverters.json` |
 | Battery | B name, C kWh per module, F price inc GST, G kit | `data/batteries.json` |
-| Gateway | B name, E price inc GST | `data/gateways.json` |
 | STC PRICE, BAT STC PRICE | A size, B amount (row ranges come from the calculator formulas) | `data/stc.json` |
 | CALCULATRE PRICE  HERE | the fixed rates inside its formulas: mounting $/kW, electrical kit, double storey, tilt, panel removal, installer $/kW, fixed margin, Solar VIC amounts, STC zone postcodes, battery margin (and its default % in D35), solar + battery discount | `data/rates.json` |
 
