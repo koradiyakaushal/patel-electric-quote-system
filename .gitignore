@@ -1,3 +1,5 @@
 archive/
 claude.md
 .claude
+__pycache__/
+.playwright-mcp/

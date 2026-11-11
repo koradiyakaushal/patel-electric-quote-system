@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patel Electrical — Price Calculator</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23f97316'/%3E%3C/svg%3E">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f3f4f6; color: #1a1a1a; line-height: 1.5; font-size: 15px; }
@@ -32,19 +33,25 @@
     /* Form rows — each row = one Excel row */
     .row { display: flex; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; gap: 0.75rem; flex-wrap: wrap; }
     .row:last-child { border-bottom: none; }
-    .row-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; min-width: 180px; flex-shrink: 0; }
-    .row-input { flex: 1; min-width: 0; }
-    .row-value { font-size: 0.9rem; font-weight: 600; color: #374151; text-align: right; min-width: 100px; font-variant-numeric: tabular-nums; }
+    .row-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; flex: 0 0 200px; }
+    .row-input { flex: 1 1 200px; min-width: 0; }
+    .row-input.narrow { flex: 0 0 120px; display: flex; align-items: center; gap: 0.35rem; }
+    .unit { font-size: 0.85rem; color: #6b7280; }
+    .row-value { font-size: 0.9rem; font-weight: 600; color: #374151; text-align: right; font-variant-numeric: tabular-nums; margin-left: auto; }
+    .row-value + .row-value { margin-left: 0; }
     .row-value.computed { color: #9ca3af; font-weight: 400; }
-    .row select, .row input[type="number"], .row input[type="text"] { width: 100%; padding: 0.45rem 0.6rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 0.9rem; background: #fff; }
+    .row select, .row input { width: 100%; height: 2.25rem; padding: 0 0.6rem; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; font-size: 0.9rem; background: #fff; color: inherit; }
     .row select:focus, .row input:focus { outline: none; border-color: #f97316; box-shadow: 0 0 0 2px rgba(249,115,22,0.15); }
-    .row input[readonly] { background: #f9fafb; color: #6b7280; border-color: #e5e7eb; }
-    .row .hint { font-size: 0.75rem; color: #9ca3af; margin-top: 2px; }
+    .warn { color: #b45309; font-size: 0.8rem; }
+    .row-note { flex-basis: 100%; text-align: right; }
+    .row-note:empty { display: none; }
+    .load-error { color: #b91c1c; font-weight: 600; padding: 1rem 0.6rem; }
 
     @media (max-width: 600px) {
       .row { flex-direction: column; align-items: stretch; gap: 0.25rem; }
-      .row-label { min-width: unset; }
-      .row-value { text-align: left; }
+      .row-label, .row-input, .row-input.narrow { flex: none; }
+      .row-input.narrow { width: 140px; }
+      .row-value, .row-note { text-align: left; margin-left: 0; }
     }
 
     /* Toggle switch — using <label> so clicking anywhere toggles */
@@ -54,10 +61,10 @@
     .toggle .track::before { content: ''; position: absolute; left: 2px; top: 2px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.15); }
     .toggle input:checked + .track { background: #f97316; }
     .toggle input:checked + .track::before { transform: translateX(20px); }
-    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; }
+    .toggle-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.4rem 0; border-bottom: 1px solid #f3f4f6; }
     .toggle-row:last-child { border-bottom: none; }
     .toggle-label { font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; }
-    .toggle-val { font-size: 0.8rem; color: #9ca3af; margin-right: 0.5rem; }
+    .toggle-val { font-size: 0.8rem; color: #9ca3af; margin-left: auto; font-variant-numeric: tabular-nums; }
 
     /* Battery fade when off */
     .battery-fields { transition: opacity 0.2s; }
@@ -134,12 +141,12 @@
     <div class="card-body">
 
       <div class="row">
-        <div class="row-label">Panel</div>
-        <div class="row-input"><select id="panel"></select></div>
+        <label class="row-label" for="panel">Panel</label>
+        <div class="row-input"><input id="panel" list="panelList" autocomplete="off" placeholder="Type to search…"><datalist id="panelList"></datalist></div>
       </div>
       <div class="row">
-        <div class="row-label">No of Panels</div>
-        <div class="row-input" style="max-width:120px;"><input type="number" id="numPanels" value="28" min="1" max="100"></div>
+        <label class="row-label" for="numPanels">No of Panels</label>
+        <div class="row-input narrow"><input type="number" id="numPanels" value="28" min="0" max="100"></div>
         <div class="row-value computed" id="panelPriceInfo"></div>
       </div>
       <div class="row">
@@ -148,19 +155,19 @@
         <div class="row-value" id="mountingCostDisplay"></div>
       </div>
       <div class="row">
-        <div class="row-label">Inverter</div>
-        <div class="row-input"><select id="inverter"></select></div>
+        <label class="row-label" for="inverter">Inverter</label>
+        <div class="row-input"><input id="inverter" list="inverterList" autocomplete="off" placeholder="Type to search…"><datalist id="inverterList"></datalist></div>
       </div>
       <div class="row">
-        <div class="row-label">Electrical Kit</div>
-        <div class="row-value computed" id="phaseInfo"></div>
+        <label class="row-label" for="phase">Electrical Kit</label>
+        <div class="row-input narrow"><select id="phase"><option>1 PH</option><option>3 PH</option></select></div>
         <div class="row-value" id="elecKitDisplay"></div>
       </div>
 
       <div class="toggle-row">
         <span class="toggle-label">Double Storey</span>
         <span class="toggle-val" id="dblVal">$0</span>
-        <label class="toggle"><input type="checkbox" id="doubleStorey"><span class="track"></span></label>
+        <label class="toggle"><input type="checkbox" id="doubleStorey" aria-label="Double storey"><span class="track"></span></label>
       </div>
       <div class="row">
         <div class="row-label">Smart Meter</div>
@@ -169,24 +176,22 @@
       <div class="toggle-row">
         <span class="toggle-label">Tilt Mounting</span>
         <span class="toggle-val" id="tiltVal">$0</span>
-        <label class="toggle"><input type="checkbox" id="tiltMounting"><span class="track"></span></label>
+        <label class="toggle"><input type="checkbox" id="tiltMounting" aria-label="Tilt mounting"><span class="track"></span></label>
       </div>
       <div class="toggle-row">
         <span class="toggle-label">Old Panel Removal</span>
         <span class="toggle-val" id="removeVal">$0</span>
-        <label class="toggle"><input type="checkbox" id="panelRemoval"><span class="track"></span></label>
+        <label class="toggle"><input type="checkbox" id="panelRemoval" aria-label="Old panel removal"><span class="track"></span></label>
       </div>
 
       <div class="row">
-        <div class="row-label">Installer Cost Discount</div>
-        <div class="row-input" style="max-width:80px;"><input type="number" id="installerDiscount" value="0" min="0" max="100" step="1"></div>
-        <span style="font-size:0.85rem;color:#6b7280;">%</span>
+        <label class="row-label" for="installerDiscount">Installer Cost Discount</label>
+        <div class="row-input narrow"><input type="number" id="installerDiscount" value="0" min="0" max="100" step="1"><span class="unit">%</span></div>
         <div class="row-value" id="installerCostDisplay"></div>
       </div>
       <div class="row">
-        <div class="row-label">Fix Expenses & Margin Discount</div>
-        <div class="row-input" style="max-width:80px;"><input type="number" id="marginDiscount" value="0" min="0" max="100" step="1"></div>
-        <span style="font-size:0.85rem;color:#6b7280;">%</span>
+        <label class="row-label" for="marginDiscount">Fix Expenses &amp; Margin Discount</label>
+        <div class="row-input narrow"><input type="number" id="marginDiscount" value="0" min="0" max="100" step="1"><span class="unit">%</span></div>
         <div class="row-value" id="fixExpDisplay"></div>
       </div>
 
@@ -199,19 +204,20 @@
     <div class="card-body">
 
       <div class="row">
-        <div class="row-label">Postcode</div>
-        <div class="row-input" style="max-width:120px;"><input type="number" id="postcode" value="3978" min="0" max="9999"></div>
+        <label class="row-label" for="postcode">Postcode</label>
+        <div class="row-input narrow"><input type="number" id="postcode" value="3978" min="0" max="9999"></div>
         <div class="row-value computed" id="zoneInfo"></div>
+        <div class="row-note" id="stcWarn"></div>
       </div>
       <div class="toggle-row">
         <span class="toggle-label">Eligible Solar VIC Rebate</span>
         <span class="toggle-val" id="vicVal">$0</span>
-        <label class="toggle"><input type="checkbox" id="solarVic"><span class="track"></span></label>
+        <label class="toggle"><input type="checkbox" id="solarVic" aria-label="Eligible Solar VIC rebate"><span class="track"></span></label>
       </div>
       <div class="toggle-row">
         <span class="toggle-label">Eligible Solar VIC 0% Int Loan</span>
         <span class="toggle-val" id="vicLoanVal">$0</span>
-        <label class="toggle"><input type="checkbox" id="solarVicLoan"><span class="track"></span></label>
+        <label class="toggle"><input type="checkbox" id="solarVicLoan" aria-label="Eligible Solar VIC 0% interest loan"><span class="track"></span></label>
       </div>
 
     </div>
@@ -221,19 +227,20 @@
   <div class="card">
     <div class="card-title battery">
       Battery
-      <label class="toggle"><input type="checkbox" id="batteryRequired" checked><span class="track"></span></label>
+      <label class="toggle"><input type="checkbox" id="batteryRequired" checked aria-label="Battery required"><span class="track"></span></label>
     </div>
     <div class="card-body">
       <div id="batteryFields" class="battery-fields">
 
         <div class="row">
-          <div class="row-label">Battery Brand</div>
-          <div class="row-input"><select id="battery"></select></div>
+          <label class="row-label" for="battery">Battery Brand</label>
+          <div class="row-input"><input id="battery" list="batteryList" autocomplete="off" placeholder="Type to search…"><datalist id="batteryList"></datalist></div>
         </div>
         <div class="row">
-          <div class="row-label">No of Modules</div>
-          <div class="row-input" style="max-width:120px;"><input type="number" id="numModules" value="16" min="1" max="50"></div>
+          <label class="row-label" for="numModules">No of Modules</label>
+          <div class="row-input narrow"><input type="number" id="numModules" value="1" min="0" max="50"></div>
           <div class="row-value computed" id="battCapInfo"></div>
+          <div class="row-note" id="battStcWarn"></div>
         </div>
         <div class="row">
           <div class="row-label">Module Cost</div>
@@ -245,18 +252,16 @@
           <div class="row-value" id="battKitDisplay"></div>
         </div>
         <div class="row">
-          <div class="row-label">Inverter</div>
-          <div class="row-input"><select id="batteryInverter"></select></div>
-        </div>
-        <div class="toggle-row">
-          <span class="toggle-label">Garage Install</span>
-          <span class="toggle-val" id="garageVal">$0</span>
-          <label class="toggle"><input type="checkbox" id="garageInstall"><span class="track"></span></label>
+          <label class="row-label" for="batteryInverter">Inverter</label>
+          <div class="row-input"><input id="batteryInverter" list="inverterList" autocomplete="off" placeholder="Type to search…"></div>
         </div>
         <div class="row">
-          <div class="row-label">Fix Expenses & Margin</div>
-          <div class="row-input" style="max-width:80px;"><input type="number" id="batteryMarginDiscount" value="0" min="-100" max="100" step="1"></div>
-          <span style="font-size:0.85rem;color:#6b7280;">%</span>
+          <label class="row-label" for="gateway">Gateway</label>
+          <div class="row-input"><select id="gateway"><option value="">No gateway</option></select></div>
+        </div>
+        <div class="row">
+          <label class="row-label" for="batteryMarginDiscount">Fix Expenses &amp; Margin</label>
+          <div class="row-input narrow"><input type="number" id="batteryMarginDiscount" value="0" min="-100" max="100" step="1"><span class="unit">%</span></div>
           <div class="row-value" id="battMarginDisplay"></div>
         </div>
 

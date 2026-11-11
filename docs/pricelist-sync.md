@@ -19,19 +19,30 @@ permission is publishing the website.
 
 ## What it reads
 
-| Sheet | Columns used (data from row 2) |
-|-------|--------------------------------|
-| Panels | B name, C cents/watt, D watts, G price inc GST |
-| Inverter | C name, D phase, G price inc GST, H smart meter |
-| Battery | B name, C kWh per module, F price inc GST, G kit |
+| Sheet | What | Website file |
+|-------|------|--------------|
+| Panels | B name, C cents/watt, D watts, G price inc GST | `data/panels.json` |
+| Inverter | C name, D phase, G price inc GST, H smart meter | `data/inverters.json` |
+| Battery | B name, C kWh per module, F price inc GST, G kit | `data/batteries.json` |
+| Gateway | B name, E price inc GST | `data/gateways.json` |
+| STC PRICE, BAT STC PRICE | A size, B amount (row ranges come from the calculator formulas) | `data/stc.json` |
+| CALCULATRE PRICE  HERE | the fixed rates inside its formulas: mounting $/kW, electrical kit, double storey, tilt, panel removal, installer $/kW, fixed margin, Solar VIC amounts, STC zone postcodes, battery margin (and its default % in D35), solar + battery discount | `data/rates.json` |
 
-- Adding, removing or editing rows is fine.
-- **Don't move or insert columns** in these sheets. If you must, update the column
+- Adding, removing or editing product rows is fine. Changing a rate inside a formula
+  (e.g. double storey 600 -> 700) is fine too, the site picks it up.
+- **Don't move or insert columns** in the product sheets. If you must, update the column
   letters at the top of `scripts/sync_pricelist.py`.
 - Blank rows and rows without a price are skipped.
+- **If the calculator's formulas change shape** (a new line item, a new formula, a
+  different calculation), the sync stops on purpose and the site keeps its last prices,
+  because the site would otherwise calculate differently from the sheet. The error lists
+  the cells that changed; update `CALC_FORMULAS` in the script and `js/calculator.js`.
 
-Not synced (still in the repo): the STC table (`data/stc.json`) and the fixed
-rates such as mounting, installer and margins (`js/calculator.js`).
+Differences from the sheet, on purpose:
+- STC sizes not in the table: the sheet shows #N/A; the site uses the next smaller size
+  (smaller rebate) and shows a warning.
+- The sheet's "garage" line (F34) can never apply, so the site has no garage option.
+- Battery STC always uses the zone-1 table, like the sheet (D34 "DONT CHANGE HERE").
 
 ## When it fails
 
