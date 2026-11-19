@@ -19,7 +19,7 @@
   "batZoneMin": 3350.0,
   "batZoneMax": 3750.0,
   "batStcFrom": 2.0,
-  "batStcTo": 45.0,
+  "batStcTo": 47.0,
   "bundleDiscount": 200.0,
   "batteryMarginAdjustDefault": -0.45
 }
